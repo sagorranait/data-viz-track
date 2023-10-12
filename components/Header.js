@@ -37,10 +37,34 @@ const Header = () => {
           <div className={`absolute ${isShow ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-1'} -left-20 w-60 z-10 mt-10 flex -translate-x-1/2 px-4 transition ease-in duration-150`}>
             <div className="w-screen max-w-md flex-auto overflow-hidden rounded-3xl bg-white text-sm leading-6 shadow-lg ring-1 ring-gray-900/5">
               <div className="py-4 px-8 flex flex-col gap-5">
-                <Link className={`mr-5 ${pathname === '/' && 'text-fuchsia-600 font-semibold'}`} href='/'>Home</Link>
-                <Link className={`mr-5 ${pathname === '/design' && 'text-fuchsia-600 font-semibold'}`} href='/design'>Design</Link>
-                <Link className={`mr-5 ${pathname === '/login' && 'text-fuchsia-600 font-semibold'}`} href='/login'>Login</Link>
-                <Link className={`mr-5 ${pathname === '/register' && 'text-fuchsia-600 font-semibold'}`} href='/register'>Register</Link>
+                <Link 
+                  className={`mr-5 ${pathname === '/' && 'text-fuchsia-600 font-semibold'}`} 
+                  href='/'
+                  onClick={() => setIsShow(!isShow)}
+                >
+                  Home
+                </Link>
+                <Link 
+                  className={`mr-5 ${pathname === '/design' && 'text-fuchsia-600 font-semibold'}`} 
+                  href='/design'
+                  onClick={() => setIsShow(!isShow)}
+                >
+                  Design
+                </Link>
+                <Link 
+                  className={`mr-5 ${pathname === '/login' && 'text-fuchsia-600 font-semibold'}`} 
+                  href='/login'
+                  onClick={() => setIsShow(!isShow)}
+                >
+                  Login
+                </Link>
+                <Link 
+                  className={`mr-5 ${pathname === '/register' && 'text-fuchsia-600 font-semibold'}`} 
+                  href='/register'
+                  onClick={() => setIsShow(!isShow)}
+                >
+                  Register
+                </Link>
               </div>
             </div>
           </div>
