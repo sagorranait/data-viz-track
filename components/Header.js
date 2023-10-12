@@ -21,10 +21,10 @@ const Header = () => {
           <span className="ml-3 text-xl">DataVizTrack</span>
         </Link>
         <nav className="md:ml-auto hidden lg:flex flex-wrap items-center text-base justify-center">
-          <Link className={`mr-5 hover:text-gray-900 ${pathname === '/' && 'text-fuchsia-600 font-semibold'}`} href='/'>Home</Link>
-          <Link className={`mr-5 hover:text-gray-900 ${pathname === '/design' && 'text-fuchsia-600 font-semibold'}`} href='/design'>Design</Link>
-          <Link className={`mr-5 hover:text-gray-900 ${pathname === '/login' && 'text-fuchsia-600 font-semibold'}`} href='/login'>Login</Link>
-          <Link className={`mr-5 hover:text-gray-900 ${pathname === '/register' && 'text-fuchsia-600 font-semibold'}`} href='/register'>Register</Link>
+          <Link className={`mr-5 ${pathname === '/' && 'text-fuchsia-600 font-semibold'}`} href='/'>Home</Link>
+          <Link className={`mr-5 ${pathname === '/design' && 'text-fuchsia-600 font-semibold'}`} href='/design'>Design</Link>
+          <Link className={`mr-5 ${pathname === '/login' && 'text-fuchsia-600 font-semibold'}`} href='/login'>Login</Link>
+          <Link className={`mr-5 ${pathname === '/register' && 'text-fuchsia-600 font-semibold'}`} href='/register'>Register</Link>
         </nav> 
         {/* Mobile Menu */}
         <div className="relative lg:hidden">
