@@ -15,12 +15,12 @@ const UploadTab = ({ nextTabIndex, tabHandler }) => {
                 width={100}
                 height={100}
               />
-              <p className="text-gray-700 text-center">Only the .csv file format is allowed to upload <label for="dragOver" title="Upload a file" className="relative z-20 cursor-pointer text-blue-500 hover:text-blue-600 block">Select a file</label> </p>
+              <p className="text-gray-700 text-center">Only the .csv file format is allowed to upload <label htmlFor="dragOver" title="Upload a file" className="relative z-20 cursor-pointer text-blue-500 hover:text-blue-600 block">Select a file</label> </p>
             </div>
         </div>
       </div>
       <div className='pt-5 text-center'>
-        <button type='submit' className='bg-fuchsia-600 hover:bg-fuchsia-800 px-5 py-2.5 text-sm leading-5 rounded-md font-semibold text-white'>
+        <button onClick={() => tabHandler(nextTabIndex)} className='bg-fuchsia-600 hover:bg-fuchsia-800 px-5 py-2.5 text-sm leading-5 rounded-md font-semibold text-white'>
           Upload
         </button>
         <p className='pt-10 text-gray-400'>By uploading your files or using our service you agree with our <span className='font-semibold underline cursor-pointer'>Terms of Service</span> and <span className='font-semibold underline cursor-pointer'>Privacy Policy</span>.</p>
