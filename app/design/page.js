@@ -1,9 +1,12 @@
 import React from 'react'
+import DivWrapper from '@/components/DivWrapper'
 
 const Design = () => {
   return (
-    <div>Design</div>
+    <DivWrapper>
+      Design page
+    </DivWrapper>
   )
 }
 
-export default Design
+export default Design;

@@ -1,7 +1,10 @@
 import Image from 'next/image'
+import DivWrapper from '@/components/DivWrapper'
 
 export default function Home() {
   return (
-    <div className='container mx-auto'>Home Page</div>
+    <DivWrapper>
+      Home page
+    </DivWrapper>
   )
 }
