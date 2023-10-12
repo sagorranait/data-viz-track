@@ -39,7 +39,7 @@ const Login = () => {
             </div>
           </div>
           <div className="mt-6 text-center">
-            <button className="bg-fuchsia-600 hover:bg-fuchsia-800 px-5 py-2.5 text-sm leading-5 rounded-md font-semibold text-white">
+            <button className="bg-fuchsia-600 hover:bg-fuchsia-800 px-5 py-2.5 text-sm leading-5 rounded-md font-semibold text-white capitalize">
               Login
             </button>
           </div>
