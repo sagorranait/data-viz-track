@@ -1,5 +1,5 @@
 "use client";
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import DivWrapper from '@/components/DivWrapper'
 import TabButton from '@/components/TabButton';
 import UploadTab from '@/components/UploadTab';
@@ -7,6 +7,21 @@ import VisualizationTab from '@/components/VisualizationTab';
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState(1);
+
+  useEffect(() => {
+    const dataStorage = JSON.parse(localStorage.getItem('dataviztrack'));
+    
+    if (!dataStorage) {
+      localStorage.setItem(
+        'dataviztrack', 
+        JSON.stringify({ 
+          userType: 'new', 
+          convertList: [] 
+        })
+      );
+    }
+  }, [])
+  
 
   const handleTabClick = (tabNumber) => {
     setActiveTab(tabNumber);
