@@ -1,5 +1,8 @@
 "use client";
 import React, { useState } from 'react'
+import { useSelector } from 'react-redux';
+import { getUser } from '@/redux/userSlice';
+import { usePathname, useRouter } from 'next/navigation';
 import { 
   Bar, 
   XAxis, 
@@ -14,12 +17,38 @@ import {
 } from 'recharts';
 
 const VisualizationTab = ({ previousTabIndex, tabHandler }) => {
+  const router = useRouter()
+  const pathname = usePathname();
+  const user = useSelector(getUser);
+  const [loading, setLoading] = useState(false);
   const [setselectVisualization, setsetselectVisualization] = useState('bar');
-  const { userType, convertList } = JSON.parse(localStorage.getItem('dataviztrack'));
+  const storageData = JSON.parse(localStorage.getItem('dataviztrack'));
 
   const selectVisualizationHandler = (event) => {
-    console.log(typeof(event.target.value));
     setsetselectVisualization(event.target.value);
+  }
+
+  const onSaveVisualizationHandler = () => {
+    setLoading(true);
+    if (!user) {
+      storageData.redirect = pathname;
+      localStorage.setItem('dataviztrack', JSON.stringify(storageData));
+
+      if (storageData.userType === 'new') {
+        setTimeout(() => {
+          setLoading(false);
+          router.push('/register');
+        }, 500);
+      }else{
+        setTimeout(() => {
+          setLoading(false);
+          router.push('/login');
+        }, 500);
+      }
+    }else{
+      console.log('user');
+      setLoading(false);
+    }
   }
 
   return (
@@ -27,7 +56,7 @@ const VisualizationTab = ({ previousTabIndex, tabHandler }) => {
       <div className='mb-8 md:mb-14'>
         { setselectVisualization === 'bar' && 
           <ResponsiveContainer width="100%" height={350}>
-            <BarChart data={convertList[convertList.length - 1]} >
+            <BarChart data={storageData?.convertList[storageData?.convertList.length - 1]} >
               <XAxis dataKey="Employee Name" />
               <YAxis dataKey="Employee ID" />
               <Tooltip />
@@ -38,7 +67,7 @@ const VisualizationTab = ({ previousTabIndex, tabHandler }) => {
         { setselectVisualization === 'pie' && 
           <ResponsiveContainer width="100%" height={350}>            
             <PieChart>
-              <Pie dataKey="Employee ID" data={convertList[convertList.length - 1]} cx="50%" cy="50%" outerRadius={80} fill="#8884d8" label/>
+              <Pie dataKey="Employee ID" data={storageData?.convertList[storageData?.convertList.length - 1]} cx="50%" cy="50%" outerRadius={80} fill="#8884d8" label/>
                 <Pie dataKey="Employee ID" fill="#82ca9d" />
               <Tooltip />
             </PieChart>
@@ -46,7 +75,7 @@ const VisualizationTab = ({ previousTabIndex, tabHandler }) => {
         }
         { setselectVisualization === 'line' && 
           <ResponsiveContainer width="100%" height={350}>
-            <LineChart data={convertList[convertList.length - 1]} >
+            <LineChart data={storageData?.convertList[storageData?.convertList.length - 1]} >
               <XAxis dataKey="Employee Name" />
               <YAxis dataKey="Employee ID" />
               <Tooltip />
@@ -82,10 +111,10 @@ const VisualizationTab = ({ previousTabIndex, tabHandler }) => {
             Back
           </button>
           <button 
-            onClick={() => tabHandler(previousTabIndex)} 
+            onClick={onSaveVisualizationHandler} 
             className='bg-fuchsia-600 hover:bg-fuchsia-800 px-5 py-2.5 text-sm leading-5 rounded-md font-semibold text-white'
           >
-            Save
+            {loading ? 'Saving...' : 'Save'}
           </button>
         </div>
       </div>

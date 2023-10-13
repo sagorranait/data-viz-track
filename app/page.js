@@ -16,7 +16,8 @@ export default function Home() {
         'dataviztrack', 
         JSON.stringify({ 
           userType: 'new', 
-          convertList: [] 
+          convertList: [],
+          redirect: ''
         })
       );
     }

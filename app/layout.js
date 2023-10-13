@@ -1,6 +1,7 @@
 import Header from '@/components/Header'
 import { Toaster } from 'react-hot-toast'
 import './globals.css'
+import ReduxProvider from '@/redux/provider'
 
 export const metadata = {
   title: 'DataVizTrack',
@@ -12,8 +13,10 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body>
         <Toaster/>
-        <Header/>
-        {children}
+        <ReduxProvider>
+          <Header/>
+          {children}
+        </ReduxProvider>
       </body>
     </html>
   )
